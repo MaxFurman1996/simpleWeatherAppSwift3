@@ -43,12 +43,10 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource, C
         
         
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         
     }
     
@@ -115,7 +113,7 @@ class WeatherVC: UIViewController, UITableViewDelegate, UITableViewDataSource, C
     
     func updateMainUI(){
         dateLbl.text = currentWeahter.date
-        currentTempLbl.text = "\(currentWeahter.currentTemp)"
+        currentTempLbl.text = "\(currentWeahter.currentTemp)°"
         locationLbl.text = currentWeahter.cityName
         currentWeatherTypeLbl.text = currentWeahter.weatherType
         currentWeatherImg.image = UIImage(named: currentWeahter.weatherType)

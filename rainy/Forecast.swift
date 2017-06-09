@@ -48,15 +48,15 @@ class Forecast{
         if let temp = weatherDict["temp"] as? Dictionary<String,AnyObject>{
             
             if let min = temp["min"] as? Double{
-                let kelvinToFarenheitPreDivision = (min * (9/5) - 459.67)
-                let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
-                self._lowTemp = kelvinToFarenheit
+//                let kelvinToFarenheitPreDivision = (min * (9/5) - 459.67)
+//                let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
+                self._lowTemp = kelvinToCelsius(kelvin: min)
             }
             
             if let max = temp["max"] as? Double{
-                let kelvinToFarenheitPreDivision = (max * (9/5) - 459.67)
-                let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
-                self._highTemp = kelvinToFarenheit
+//                let kelvinToFarenheitPreDivision = (max * (9/5) - 459.67)
+//                let kelvinToFarenheit = Double(round(10 * kelvinToFarenheitPreDivision/10))
+                self._highTemp = kelvinToCelsius(kelvin: max)
             }
         }
         
@@ -74,6 +74,10 @@ class Forecast{
             dateFormatter.dateFormat = "EEEE"
             self._date = dateFormatter.string(from: unixToDate)
         }
+    }
+    
+    func kelvinToCelsius(kelvin : Double) -> Double{
+        return ((kelvin - 273.15)*10).rounded()/10
     }
 }
 
